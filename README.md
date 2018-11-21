@@ -76,9 +76,13 @@ See `cypress/integration/unit/unit-test-react-enzyme-spec.js` test for details
 ### Command line
 
 `make test-local` development cypress/integration/examples/theinternet.spec.js
+
 `make test-qa` qa cypress/integration/examples/theinternet.spec.js
+
 `make test-staging` staging cypress/integration/examples/theinternet.spec.js
+
 `make test-production` production cypress/integration/examples/theinternet.spec.js
+
 `make test-unit` unit cypress/integration/unit/unit-test-react-enzyme-spec.js
 
 The tests can be calling the executable `./node_modules/cypress/bin/cypress`
@@ -88,7 +92,9 @@ And the path for the spec files you wish to run `-s '<pathToFile>'` eg `-s 'cypr
 ### GUI - Any changes made to test files are automatically picked up by the GUI and executed, post file save.
 
 `make test-unit-gui`  Opens the GUI with the unit test configuration selection
+
 `make test-local-gui` Opens the GUI with the development configuration selection
+
 `make test-qa-gui` 	Opens the GUI with the qa configuration selection
 
 The GUI can be opened by `npx cypress open` but requires a `--env configFile=<env>` option in order to set the correct BaseURL
