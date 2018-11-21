@@ -86,7 +86,9 @@ See `cypress/integration/unit/unit-test-react-enzyme-spec.js` test for details
 `make test-unit` unit cypress/integration/unit/unit-test-react-enzyme-spec.js
 
 The tests can be calling the executable `./node_modules/cypress/bin/cypress`
+
 Provide an env with `--env configFile=<env>` 
+
 And the path for the spec files you wish to run `-s '<pathToFile>'` eg `-s 'cypress/integration/examples/theinternet.spec.js'`
 
 ### GUI - Any changes made to test files are automatically picked up by the GUI and executed, post file save.
@@ -103,7 +105,9 @@ The GUI can be opened by `npx cypress open` but requires a `--env configFile=<en
 ### Reporting
 
 Videos of each run are stored in `cypress/videos`
+
 Screenshots of failing tests are stored in `cypress/screenshots`
+
 Reports of test runs are generated with MochaAwesome are stored in `cypress/reports`
 
 ## Intellisense
