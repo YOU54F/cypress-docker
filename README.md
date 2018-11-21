@@ -58,7 +58,7 @@ Currently supported environments are
 
 If no option is provided is will default to development
 
-In order to setup development, you will need compass locally running and your URI_ROOT should be set.
+In order to setup development, you will need a website locally running and your URI_ROOT should be set.
 
 `export URI_ROOT=<your_root_url>`
 
@@ -75,15 +75,15 @@ See `cypress/integration/unit/unit-test-react-enzyme-spec.js` test for details
 
 ### Command line
 
-`make test-local` development cypress/integration/compass_e2e/login.spec.js
-`make test-qa` qa cypress/integration/compass_e2e/login.spec.js
-`make test-staging` staging cypress/integration/compass_e2e/login.spec.js
-`make test-production` production cypress/integration/compass_e2e/login.spec.js
+`make test-local` development cypress/integration/examples/theinternet.spec.js
+`make test-qa` qa cypress/integration/examples/theinternet.spec.js
+`make test-staging` staging cypress/integration/examples/theinternet.spec.js
+`make test-production` production cypress/integration/examples/theinternet.spec.js
 `make test-unit` unit cypress/integration/unit/unit-test-react-enzyme-spec.js
 
 The tests can be calling the executable `./node_modules/cypress/bin/cypress`
 Provide an env with `--env configFile=<env>` 
-And the path for the spec files you wish to run `-s '<pathToFile>'` eg `-s 'cypress/integration/compass_e2e/login.spec.js'`
+And the path for the spec files you wish to run `-s '<pathToFile>'` eg `-s 'cypress/integration/examples/theinternet.spec.js'`
 
 ### GUI - Any changes made to test files are automatically picked up by the GUI and executed, post file save.
 
