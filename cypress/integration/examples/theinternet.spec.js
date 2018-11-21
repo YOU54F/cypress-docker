@@ -9,7 +9,7 @@ describe('Logging In - HTML Web Form - The Internet', function () {
       cy.get(".button").should('not.exist')
     })
     it('User granted access with valid details', function () {
-      cy.visit('login')
+      cy.visit('/login')
       cy.url().should('include', 'login')
       cy.get('#username').type('tomsmith')
       cy.get('#password').type('SuperSecretPassword!{enter}')

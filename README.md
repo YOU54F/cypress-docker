@@ -62,28 +62,33 @@ In order to setup development, you will need a website locally running and your 
 
 `export URI_ROOT=<your_root_url>`
 
+If you are using docker then please set your URI_ROOT in your docker-compose file, it is set in this example
+
+```
+        environment:
+            - URI_ROOT=the-internet.herokuapp.com
+```
+
 If it's not set, the application will error, and ask you to set it.
 
-## Unit Testing
+## Running tests in Docker via Make
 
-Unit testing can be performed with Cypress,
+- `make docker-build` - Build the image
+- `make docker-test-local` - Run the tests
+- `make docker-bash` - Access the bash shell in the container
 
-See `cypress/integration/unit/unit-test-react-enzyme-spec.js` test for details
+For more, see the Makefile
 
+## Running tests locally via Make
 
-## Running tests via Make
+- `make test-local` 
+- `make test-qa` 
+- `make test-staging` 
+- `make test-production` 
 
-### Command line
+For more, see the Makefile
 
-`make test-local` development cypress/integration/examples/theinternet.spec.js
-
-`make test-qa` qa cypress/integration/examples/theinternet.spec.js
-
-`make test-staging` staging cypress/integration/examples/theinternet.spec.js
-
-`make test-production` production cypress/integration/examples/theinternet.spec.js
-
-`make test-unit` unit cypress/integration/unit/unit-test-react-enzyme-spec.js
+## Direct from the command line
 
 The tests can be calling the executable `./node_modules/cypress/bin/cypress`
 
@@ -100,7 +105,6 @@ And the path for the spec files you wish to run `-s '<pathToFile>'` eg `-s 'cypr
 `make test-qa-gui` 	Opens the GUI with the qa configuration selection
 
 The GUI can be opened by `npx cypress open` but requires a `--env configFile=<env>` option in order to set the correct BaseURL
-
 
 ### Reporting
 
