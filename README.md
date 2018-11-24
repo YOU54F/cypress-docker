@@ -1,4 +1,6 @@
-# Cypress IO
+# Cypress IO 
+
+[![CircleCI](https://circleci.com/gh/YOU54F/cypressio-docker/tree/master.svg?style=svg)](https://circleci.com/gh/YOU54F/cypressio-docker/tree/master)
 
 This is an example project testing the https://the-internet.herokuapp.com/
 
