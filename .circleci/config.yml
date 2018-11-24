@@ -32,33 +32,15 @@ jobs:
       - store_test_results:
           path: cypress/reports
       - store_artifacts:
-          path: cypress/reports         
+          path: cypress/reports
       - store_artifacts:
           path: cypress/videos
       - store_artifacts:
           path: cypress/screenshots
       - run:
-          name: reporting to slack
+          name: Slack Custom Reporting
           when: always
           command: |
-            echo ${CIRCLE_WORKFLOW_ID}
-            if [ "${CIRCLE_BRANCH}" == "circleci" ]; then
-            export REPORT_FILE=~/app/cypress/reports/mocha/mochawesome.json
-            export REPORT_FILE_HTML=/root/app/cypress/reports/mocha/mochawesome.html
-            totalTestFailures=$(jq '.stats.failures' ${REPORT_FILE} )
-            totalTests=$(jq '.stats.tests' ${REPORT_FILE})
-            export TOTAL_TEST_FAILURES=$totalTests 
-            export TOTAL_TESTS=$totalTests     
-            curl $SLACK_API_FILE_UPLOAD_LOCATION \
-                -F token=$SLACK_API_TOKEN \
-                -F channels=$SLACK_CHANNEL \
-                -F title="Video of Test failures from ${CIRCLE_PROJECT_REPONAME} - Build Num ${CIRCLE_BUILD_NUM} " \
-                -F file=@"cypress/videos/examples/theinternet.spec.js.mp4" \
-                -F initial_comment="${CIRCLE_PROJECT_REPONAME} failed - See logs for details ${CIRCLE_BUILD_URL}
-                 Total Tests Run:- ${TOTAL_TESTS} 
-                 Total Tests Failed:- ${TOTAL_TEST_FAILURES}
-                 Test Report can be viewed here:- 
-                 https://${CIRCLE_BUILD_NUM}-${CIRCLE_WORKFLOW_ID}-gh.circle-artifacts.com/0/${REPORT_FILE_HTML} "
-            fi
-
-            
+            cd .circleci
+            chmod +x slack-alert.sh
+            ./slack-alert.sh
