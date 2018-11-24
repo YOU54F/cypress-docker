@@ -1,0 +1,64 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      # the Docker image with Cypress dependencies
+      - image: cypress/base:8
+        environment:
+          ## this enables colors in the output
+          TERM: xterm
+    working_directory: ~/app
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v2-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
+            - v2-deps-{{ .Branch }}-
+            - v2-deps-
+      - run: npm ci
+      - save_cache:
+          key: v2-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          paths:
+            - ~/.npm
+            - ~/.cache
+      - run:
+          name: Install jq
+          command: |
+            apt-get install jq
+      - run:
+          name: Running E2E tests
+          command: make test-qa
+      - store_test_results:
+          path: cypress/reports
+      - store_artifacts:
+          path: cypress/reports         
+      - store_artifacts:
+          path: cypress/videos
+      - store_artifacts:
+          path: cypress/screenshots
+      - run:
+          name: reporting to slack
+          when: always
+          command: |
+            echo ${CIRCLE_WORKFLOW_ID}
+            if [ "${CIRCLE_BRANCH}" == "circleci" ]; then
+            export REPORT_FILE=~/app/cypress/reports/mocha/mochawesome.json
+            export REPORT_FILE_HTML=/root/app/cypress/reports/mocha/mochawesome.html
+            totalTestFailures=$(jq '.stats.failures' ${REPORT_FILE} )
+            totalTests=$(jq '.stats.tests' ${REPORT_FILE})
+            export TOTAL_TEST_FAILURES=$totalTests 
+            export TOTAL_TESTS=$totalTests     
+            curl $SLACK_API_FILE_UPLOAD_LOCATION \
+                -F token=$SLACK_API_TOKEN \
+                -F channels=$SLACK_CHANNEL \
+                -F title="Video of Test failures from ${CIRCLE_PROJECT_REPONAME} - Build Num ${CIRCLE_BUILD_NUM} " \
+                -F file=@"cypress/videos/examples/theinternet.spec.js.mp4" \
+                -F initial_comment="${CIRCLE_PROJECT_REPONAME} failed - See logs for details ${CIRCLE_BUILD_URL}
+                 Total Tests Run:- ${TOTAL_TESTS} 
+                 Total Tests Failed:- ${TOTAL_TEST_FAILURES}
+                 Test Report can be viewed here:- 
+                 https://${CIRCLE_BUILD_NUM}-${CIRCLE_WORKFLOW_ID}-gh.circle-artifacts.com/0/${REPORT_FILE_HTML} "
+            fi
+
+            

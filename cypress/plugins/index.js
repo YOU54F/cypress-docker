@@ -11,15 +11,17 @@ const path = require('path')
  * @return {[type]}        [return the modified config object]
  */
 function processConfig(on, config) {
-  const file = config.env.configFile || 'development'
+  const file = config.env.configFile || 'no_env_default'
   return getConfigurationByFile(file).then(function(file) {
     if (config.env.configFile === 'development') {
       if (!process.env.URI_ROOT) {
-        throw new Error('URI_ROOT not set - export URI_ROOT=<intials>.test');
+        throw new Error('URI_ROOT not set - export URI_ROOT=http://yourlocalhost.com');
         return Error
       }
+      // append the URI_ROOT to the baseUrl
       file.baseUrl = file.baseUrl + process.env.URI_ROOT
     }
+    // always return the file object
     return file
   })
 }
