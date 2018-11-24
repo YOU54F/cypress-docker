@@ -54,7 +54,6 @@ Currently supported environments are
 - production
 - staging
 - qa
-- unit (sets a blank url as testing components, not a built site)
 
 If no option is provided is will default to development
 
@@ -66,7 +65,7 @@ If you are using docker then please set your URI_ROOT in your docker-compose fil
 
 ```
         environment:
-            - URI_ROOT=the-internet.herokuapp.com
+            - URI_ROOT=http://the-internet.herokuapp.com
 ```
 
 If it's not set, the application will error, and ask you to set it.
@@ -97,8 +96,6 @@ Provide an env with `--env configFile=<env>`
 And the path for the spec files you wish to run `-s '<pathToFile>'` eg `-s 'cypress/integration/examples/theinternet.spec.js'`
 
 ### GUI - Any changes made to test files are automatically picked up by the GUI and executed, post file save.
-
-`make test-unit-gui`  Opens the GUI with the unit test configuration selection
 
 `make test-local-gui` Opens the GUI with the development configuration selection
 

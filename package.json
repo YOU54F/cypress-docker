@@ -1,11 +1,13 @@
 {
   "name": "cypress-example",
   "version": "0.0.0",
-  "description": "This package is to install cypress/mochawesome",
+  "description": "This package is to install cypress and reporters",
   "main": "index.js",
   "dependencies": {
     "cypress": "^3.1.2",
     "mochawesome": "^3.1.1",
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "mocha-junit-reporter": "^1.18.0",
+    "mocha-multi-reporters": "^1.1.7"
   }
 }

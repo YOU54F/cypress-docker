@@ -1,7 +1,7 @@
 {
   "projectId": "yourprojectidhere",
-  "reporter": "mochawesome",
+  "reporter": "mocha-multi-reporters",
   "reporterOptions": {
-    "reportDir": "cypress/reports"
+    "configFile": "config.json"
   }
 }
