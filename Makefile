@@ -21,7 +21,7 @@ test-qa-gui:
 	npx cypress open --env configFile=qa
 
 test-qa-record:
-	$(CYPRESSRUNCMD) --env configFile=qa -s 'cypress/integration/examples/theinternet.spec.js' --record
+	$(CYPRESSRUNCMD) --env configFile=qa -s 'cypress/integration/examples/*.spec.js' --record
 
 test-theinternet:
 	$(CYPRESSRUNCMD) --env configFile=qa -s 'cypress/integration/examples/theinternet.spec.js'
