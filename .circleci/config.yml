@@ -55,20 +55,7 @@ jobs:
             cd .circleci
             chmod +x slack-alert.sh
             ./slack-alert.sh
-      - run:
-          name: Slack Screenshots reporting
-          when: always
-          command: |
-            cd .circleci
-            chmod +x process-screenshots.sh
-            ./process-screenshots.sh
-      - run:
-          name: Slack Video reporting
-          when: always
-          command: |
-            cd .circleci
-            chmod +x process-videos.sh
-            ./process-videos.sh
+
 workflows:
   build-test:
     jobs:
