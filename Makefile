@@ -21,7 +21,7 @@ test-qa-gui:
 	npx cypress open --env configFile=qa
 
 test-qa-record:
-	$(CYPRESSRUNCMD) --env configFile=qa -s 'cypress/integration/examples/theinternet.spec.js' --record --key ${CYPRESS_KEY}
+	$(CYPRESSRUNCMD) --env configFile=qa -s 'cypress/integration/examples/theinternet.spec.js' --record
 
 test-theinternet:
 	$(CYPRESSRUNCMD) --env configFile=qa -s 'cypress/integration/examples/theinternet.spec.js'
@@ -45,7 +45,7 @@ docker-test-production:
 	$(DOCKERRUNCMD) $(CYPRESSRUNCMD) --env configFile=production -s 'cypress/integration/examples/theinternet.spec.js'
 
 docker-test-local-record:
-	$(DOCKERRUNCMD) $(CYPRESSRUNCMD) --env configFile=development -s 'cypress/integration/examples/theinternet.spec.js' --record --key ${CYPRESS_RECORD_KEY}
+	$(DOCKERRUNCMD) $(CYPRESSRUNCMD) --env configFile=development -s 'cypress/integration/examples/theinternet.spec.js' --record
 
 docker-test-theinternet:
 	$(DOCKERRUNCMD) $(CYPRESSRUNCMD) --env configFile=qa -s 'cypress/integration/examples/theinternet.spec.js'
