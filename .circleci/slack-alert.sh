@@ -41,7 +41,7 @@ export GIT_COMMIT_URL=https://github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PRO
         done
       # If its a PR add it to the slack request    
       if [[ ((`echo $CIRCLE_PULL_REQUEST | grep -c "pull"` > 0))]]; then 
-            pr_link="\n<'${CIRCLE_PULL_REQUEST}'| Pull Request>"
+            pr_link="<'${CIRCLE_PULL_REQUEST}'| - Pull Request>"
       fi     
 
 # if no tests, we error and we must send this back to slack instead of a false positive
@@ -70,7 +70,7 @@ export GIT_COMMIT_URL=https://github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PRO
       elif [ $TOTAL_TESTS_FAILING -eq 0 ]; then
             echo 'passing loop' &&
             curl -X POST -H 'Content-type: application/json' \
-            --data '{"text":"'${CIRCLE_PROJECT_REPONAME}' test run passed.\nThis run was triggered by <'$GIT_COMMIT_URL'|'${CIRCLE_USERNAME}'>"'"$pr_link"'""","channel":"'$SLACK_API_CHANNEL'",
+            --data '{"text":"'${CIRCLE_PROJECT_REPONAME}' test run passed.\nThis run was triggered by <'$GIT_COMMIT_URL'|'${CIRCLE_USERNAME}'>'"$pr_link"'","channel":"'$SLACK_API_CHANNEL'",
             "attachments":[{"color":"#36a64f","fallback":"Report available at '$REPORT_ARTEFACT_LOCATION'",
             "text":"Environment: '${CIRCLE_BRANCH}'\nTotal Passed: '$TOTAL_TESTS_PASSING'",
             "actions":[{"type":"button","text":"Test Report","url":"'$REPORT_ARTEFACT_LOCATION'","style":"primary"},
