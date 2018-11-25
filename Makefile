@@ -45,7 +45,7 @@ docker-test-production:
 	$(DOCKERRUNCMD) $(CYPRESSRUNCMD) --env configFile=production -s 'cypress/integration/examples/theinternet.spec.js'
 
 docker-test-local-record:
-	$(DOCKERRUNCMD) $(CYPRESSRUNCMD) --env configFile=development -s 'cypress/integration/examples/theinternet.spec.js' --record
+	$(DOCKERRUNCMD) $(CYPRESSRUNCMD) --env configFile=development -s 'cypress/integration/examples/*.spec.js' --record
 
 docker-test-theinternet:
 	$(DOCKERRUNCMD) $(CYPRESSRUNCMD) --env configFile=qa -s 'cypress/integration/examples/theinternet.spec.js'
