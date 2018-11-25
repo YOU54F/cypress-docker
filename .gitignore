@@ -4,3 +4,4 @@ cypress/screenshots
 cypress/videos
 cypress/reports
 **/.DS_Store
+.scannerwork/

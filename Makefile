@@ -20,8 +20,8 @@ test-local-gui:
 test-qa-gui:
 	npx cypress open --env configFile=qa
 
-test-local-record:
-	$(CYPRESSRUNCMD) --env configFile=development -s 'cypress/integration/examples/theinternet.spec.js' --record --key ${CYPRESS_RECORD_KEY}
+test-qa-record:
+	$(CYPRESSRUNCMD) --env configFile=qa -s 'cypress/integration/examples/theinternet.spec.js' --record --key ${CYPRESS_KEY}
 
 test-theinternet:
 	$(CYPRESSRUNCMD) --env configFile=qa -s 'cypress/integration/examples/theinternet.spec.js'

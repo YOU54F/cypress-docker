@@ -1,6 +1,7 @@
 # Cypress IO 
 
-[![CircleCI](https://circleci.com/gh/YOU54F/cypressio-docker/tree/master.svg?style=svg)](https://circleci.com/gh/YOU54F/cypressio-docker/tree/master)
+[![CircleCI](https://circleci.com/gh/YOU54F/cypressio-docker.svg?style=svg)](https://circleci.com/gh/YOU54F/cypressio-docker)
+[![Sonarcloud Status](https://sonarcloud.io/api/project_badges/measure?project=YOU54F_cypressio-docker&metric=alert_status)](https://sonarcloud.io/dashboard?id=YOU54F_cypressio-docker)
 
 This is an example project testing the https://the-internet.herokuapp.com/
 

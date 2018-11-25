@@ -17,7 +17,7 @@ export VIDEO_ARTEFACT_LOCATION=${REPORT_ARTEFACT_URL}${VIDEO_LOCATION}
 # if total tests failing is more than 0, publish failure to slack
       if [ $TOTAL_TESTS_FAILING -gt 0 ]; then
             curl -X POST -H 'Content-type: application/json' \
-            --data '{"text":"'${CIRCLE_PROJECT_REPONAME}' test run failed.\nThis run was triggered by '${CIRCLE_USERNAME}'","channel":"'$SLACK_API_CHANNEL'",
+            --data '{"text":"'${CIRCLE_PROJECT_REPONAME}' test run failed.\nThis run was triggered by '${CIRCLE_USERNAME}'\n<'${CIRCLE_PULL_REQUEST}'| Pull Request>","channel":"'$SLACK_API_CHANNEL'",
             "attachments":[{"color":"#ff0000","fallback":"Report available at '$REPORT_ARTEFACT_LOCATION'",
             "title":"Total Failed: '$TOTAL_TESTS_FAILING'",
             "text":"Environment: '${CIRCLE_BRANCH}'\nTotal Tests: '$TOTAL_TESTS'\nTotal Passing: '$TOTAL_TESTS_PASSING'",
@@ -29,7 +29,7 @@ export VIDEO_ARTEFACT_LOCATION=${REPORT_ARTEFACT_URL}${VIDEO_LOCATION}
 # else if total tests failing is equal to 0, publish success to slack
       elif [ $TOTAL_TESTS_FAILING -eq 0 ]; then
             curl -X POST -H 'Content-type: application/json' \
-            --data '{"text":"'${CIRCLE_PROJECT_REPONAME}' test run passed.\nThis run was triggered by '${CIRCLE_USERNAME}'","channel":"'$SLACK_API_CHANNEL'",
+            --data '{"text":"'${CIRCLE_PROJECT_REPONAME}' test run passed.\nThis run was triggered by '${CIRCLE_USERNAME}'\n<'${CIRCLE_PULL_REQUEST}'| Pull Request>","channel":"'$SLACK_API_CHANNEL'",
             "attachments":[{"color":"#36a64f","fallback":"Report available at '$REPORT_ARTEFACT_LOCATION'",
             "text":"Environment: '${CIRCLE_BRANCH}'\nTotal Passed: '$TOTAL_TESTS_PASSING'",
             "footer":"Test Duration: '$TEST_DURATION'ms",
