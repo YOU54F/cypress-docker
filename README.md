@@ -118,8 +118,28 @@ Reports of test runs are generated with MochaAwesome are stored in `cypress/repo
 
 Typings have been added for this project by the Cypress team, use visual studio code - it's free and comes feature packed.
 
+## CircleCI
+
+This project is building in CircleCI and can be viewed at the following link
+
+https://circleci.com/gh/YOU54F/cypressio-docker
+
+See the `.circleci` folder 
+
+- `config.yml` - Contains the CircleCI build configuration
+- `sonar-scanner-on-pr.sh` - Contains a script to publish to SonarQube on Pull Requests
+- `slack-alert.sh` - Publish Test results to Slack
+
+## Cypress Dashboard Recording
+
+CircleCI builds pass in a `CYPRESS_RECORD_KEY` in order to publish the results to the Cypress Dashboard.
+
+You can view the project here, it is public but will require you sign into Github
+
+https://dashboard.cypress.io/#/projects/ke33f1/runs/35 
+
 ## TODO
 
-- Add vnc to docker build so we can view the GUI in the container
-- Need to check hot reloading works inside the docker container for the test GUI
-- pare back base image as I think it can be smaller
+- CircleCI Workflows
+- Check triggering of job from another job
+- Loop over screenshots and video folder and programattically build up links for slack
