@@ -34,12 +34,7 @@ jobs:
       - run:
           name: Running E2E tests with recording
           when: on_success
-          command: make test-qa-record
-      - run:
-          name: Process video filename
-          command: |
-            chmod +x .circleci/process-videos.sh
-            ./.circleci/process-videos.sh          
+          command: make test-qa-record          
       - store_test_results:
           path: cypress/reports
       - store_artifacts:
