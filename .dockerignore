@@ -6,3 +6,4 @@ cypress/reports
 .git
 .cache
 **/.DS_Store
+.scannerwork/

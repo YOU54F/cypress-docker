@@ -27,17 +27,24 @@ jobs:
           command: |
             apt-get install jq
       - run:
-          name: Run Sonarqube
+          name: echos
           command: |
-            sonar-scanner.bat 
-            -Dsonar.projectKey=$SONAR_PROJECTKEY 
+            echo CYPRESS_CONFIGFILE 
+            echo $CYPRESS_CONFIGFILE 
+      - run: 
+          name: Run SonarScanner 
+          command:
+            > 
+            ./node_modules/.bin/sonar-scanner
+            -Dsonar.host.url=https://sonarcloud.io
+            -Dsonar.projectKey=$SONAR_PROJECTKEY
             -Dsonar.organization=$SONAR_ORGANIZATION
-            -Dsonar.sources=. 
-            -Dsonar.host.url=https://sonarcloud.io 
+            -Dsonar.sources=.
             -Dsonar.login=$SONAR_LOGIN
+            -Dsonar.branch.name=${CIRCLE_BRANCH}
       - run:
           name: Running E2E tests
-          command: make test-qa
+          command: make test-qa-record
       - store_test_results:
           path: cypress/reports
       - store_artifacts:

@@ -16,7 +16,6 @@ function processConfig(on, config) {
     if (config.env.configFile === 'development') {
       if (!process.env.URI_ROOT) {
         throw new Error('URI_ROOT not set - export URI_ROOT=http://yourlocalhost.com');
-        return Error
       }
       // append the URI_ROOT to the baseUrl
       file.baseUrl = file.baseUrl + process.env.URI_ROOT
