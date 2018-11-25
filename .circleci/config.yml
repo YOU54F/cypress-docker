@@ -30,7 +30,7 @@ jobs:
           name: Sonarqube if Pull Request
           command: |
             chmod +x .circleci/sonar-scanner-on-pr.sh
-            # ./.circleci/sonar-scanner-on-pr.sh          
+            ./.circleci/sonar-scanner-on-pr.sh          
       - run:
           name: Running E2E tests with recording
           when: on_success
