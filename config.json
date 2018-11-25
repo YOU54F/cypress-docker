@@ -6,6 +6,7 @@
   },
   "mochawesomeReporterOptions": {
     "reportDir": "cypress/reports/mocha",
-    "quiet": true
+    "quiet": true,
+    "overwrite": false
   }
 }
