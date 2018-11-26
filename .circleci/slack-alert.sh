@@ -17,9 +17,9 @@ export GIT_COMMIT_URL=https://github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PRO
             totalSuiteTests=$(cat $report | egrep -o 'tests="[^.]' | cut -d \" -f2)
             testSuiteDuration=$(cat $report | jq '.stats.duration' $report )
 
-            failingTestCount = $failingTestCount + $totalSuiteTestsFailing
-            totalTestCount = $totalTestCount + $totalSuiteTests
-            durationTestCount = $durationTestCount + $testSuiteDuration
+            failingTestCount=$failingTestCount+$totalSuiteTestsFailing
+            totalTestCount=$totalTestCount+$totalSuiteTests
+            durationTestCount=$durationTestCount+$testSuiteDuration
        done
 
       export TOTAL_TESTS_PASSING=$totalTestCount-$failingTestCount
