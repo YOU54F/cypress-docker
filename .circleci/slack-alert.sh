@@ -12,17 +12,15 @@ export VIDEO_ARTEFACT_LOCATION=${REPORT_ARTEFACT_URL}${VIDEO_LOCATION}
 export GIT_COMMIT_URL=https://github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/commit/${CIRCLE_SHA1}
 
 
-      for report in $REPORT_LOCATION_JUNIT/*.xml; do
-            totalSuiteTestsFailing=$(cat $report | egrep -o 'failures="[^.]' | cut -d \" -f2)
-            totalSuiteTests=$(cat $report | egrep -o 'tests="[^.]' | cut -d \" -f2)
-            testSuiteDuration=$(cat $report | jq '.stats.duration' $report )
-
-            failingTestCount=$failingTestCount+$totalSuiteTestsFailing
-            totalTestCount=$totalTestCount+$totalSuiteTests
+      for report in cypress/*.xml; do
+            totalSuiteTestsFailing=$(cat $report | egrep -o 'failures="[^.]' -m1 | cut -d \" -f2)
+            totalSuiteTests=$(cat $report | egrep -o 'tests="[^.]' -m1 | cut -d \" -f2)
+            totalTestCount=$((totalSuiteTests+totalTestCount))
+            failingTestCount=$((totalSuiteTestsFailing+failingTestCount))
             durationTestCount=$durationTestCount+$testSuiteDuration
        done
 
-      export TOTAL_TESTS_PASSING=$totalTestCount-$failingTestCount
+      export TOTAL_TESTS_PASSING=$((totalTestCount-failingTestCount))
       export TOTAL_TESTS_FAILING=$failingTestCount 
       export TOTAL_TESTS=$totalTestCount
       export TEST_DURATION=$durationTestCount 
