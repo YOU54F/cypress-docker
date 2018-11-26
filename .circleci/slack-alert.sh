@@ -1,5 +1,3 @@
-# if [ "${CIRCLE_BRANCH}" == "circleci" ]; then
-# two reports here, access it with .json or .html
 export REPORT_LOCATION=~/app/cypress/reports/mocha/mochawesome    
 export REPORT_LOCATION_JUNIT=~/app/cypress/reports/junit    
 export VIDEO_LOCATION=~/app/cypress/videos/ 
@@ -55,7 +53,6 @@ export GIT_COMMIT_URL=https://github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PRO
 
 # if no tests, we error and we must send this back to slack instead of a false positive
       if [ -z "$TOTAL_TESTS" ]; then
-            echo 'build fail loop' &&
             curl -X POST -H 'Content-type: application/json' \
             --data '{"text":"'${CIRCLE_PROJECT_REPONAME}' test build failed.\nThis run was triggered by <'$GIT_COMMIT_URL'|'${CIRCLE_USERNAME}'>'"$pr_link"'","channel":"'$SLACK_API_CHANNEL'",
             "attachments":[{"color":"#ff0000","fallback":"Report available at '$REPORT_ARTEFACT_LOCATION'",
@@ -65,7 +62,6 @@ export GIT_COMMIT_URL=https://github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PRO
             $SLACK_WEBHOOK_URL 
 # if total tests failing is more than 0, publish failure to slack
       elif [ $TOTAL_TESTS_FAILING -gt 0 ]; then
-            echo 'test fail loop' &&
             curl -X POST -H 'Content-type: application/json' \
             --data '{"text":"'${CIRCLE_PROJECT_REPONAME}' test run failed.\nThis run was triggered by <'$GIT_COMMIT_URL'|'${CIRCLE_USERNAME}'>'"$pr_link"'","channel":"'$SLACK_API_CHANNEL'",
             "attachments":[{"color":"#ff0000","fallback":"Report available at '$REPORT_ARTEFACT_LOCATION'",
@@ -77,7 +73,6 @@ export GIT_COMMIT_URL=https://github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PRO
             $SLACK_WEBHOOK_URL 
 # else if total tests failing is equal to 0, publish success to slack
       elif [ $TOTAL_TESTS_FAILING -eq 0 ]; then
-            echo 'passing loop' &&
             curl -X POST -H 'Content-type: application/json' \
             --data '{"text":"'${CIRCLE_PROJECT_REPONAME}' test run passed.\nThis run was triggered by <'$GIT_COMMIT_URL'|'${CIRCLE_USERNAME}'>'"$pr_link"'","channel":"'$SLACK_API_CHANNEL'",
             "attachments":[{"color":"#36a64f","fallback":"Report available at '$REPORT_ARTEFACT_LOCATION'",
@@ -88,9 +83,3 @@ export GIT_COMMIT_URL=https://github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PRO
             $SLACK_WEBHOOK_URL     
       # closing if from slack reporting conditions    
       fi 
-
-# closing if from branch condition at top of script    
-# fi
-
-      
-  
