@@ -12,7 +12,7 @@ export VIDEO_ARTEFACT_LOCATION=${REPORT_ARTEFACT_URL}${VIDEO_LOCATION}
 export GIT_COMMIT_URL=https://github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/commit/${CIRCLE_SHA1}
 
 
-      for report in cypress/*.xml; do
+      for report in $REPORT_LOCATION_JUNIT/*.xml; do
             totalSuiteTestsFailing=$(cat $report | egrep -o 'failures="[^.]' -m1 | cut -d \" -f2)
             totalSuiteTests=$(cat $report | egrep -o 'tests="[^.]' -m1 | cut -d \" -f2)
             totalTestCount=$((totalSuiteTests+totalTestCount))
