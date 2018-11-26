@@ -1,20 +1,31 @@
 # if [ "${CIRCLE_BRANCH}" == "circleci" ]; then
 # two reports here, access it with .json or .html
 export REPORT_LOCATION=~/app/cypress/reports/mocha/mochawesome    
+export REPORT_LOCATION_JUNIT=~/app/cypress/reports/junit    
 export VIDEO_LOCATION=~/app/cypress/videos/ 
 export SCREENSHOT_LOCATION=~/app/cypress/screenshots/ 
 export REPORT_ARTEFACT_URL=https://circleci.com/api/v1.1/project/github/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BUILD_NUM}/artifacts/0
 export REPORT_ARTEFACT_LOCATION=${REPORT_ARTEFACT_URL}${REPORT_LOCATION}.html
 export VIDEO_ARTEFACT_LOCATION=${REPORT_ARTEFACT_URL}${VIDEO_LOCATION}
-totalTestsPassing=$(jq '.stats.passes' ${REPORT_LOCATION}.json )
-totalTestsFailing=$(jq '.stats.failures' ${REPORT_LOCATION}.json )
-totalTests=$(jq '.stats.tests' ${REPORT_LOCATION}.json )
-testDuration=$(jq '.stats.duration' ${REPORT_LOCATION}.json )
-export TOTAL_TESTS=$totalTests
-export TOTAL_TESTS_FAILING=$totalTestsFailing 
-export TOTAL_TESTS_PASSING=$totalTestsPassing 
-export TEST_DURATION=$testDuration 
+
+
 export GIT_COMMIT_URL=https://github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/commit/${CIRCLE_SHA1}
+
+
+      for report in $REPORT_LOCATION_JUNIT/*.xml; do
+            totalSuiteTestsFailing=$(cat $report | egrep -o 'failures="[^.]' | cut -d \" -f2)
+            totalSuiteTests=$(cat $report | egrep -o 'tests="[^.]' | cut -d \" -f2)
+            testSuiteDuration=$(cat $report | jq '.stats.duration' $report )
+
+            failingTestCount = $failingTestCount + $totalSuiteTestsFailing
+            totalTestCount = $totalTestCount + $totalSuiteTests
+            durationTestCount = $durationTestCount + $testSuiteDuration
+       done
+
+      export TOTAL_TESTS_PASSING=$totalTestCount-$failingTestCount
+      export TOTAL_TESTS_FAILING=$failingTestCount 
+      export TOTAL_TESTS=$totalTestCount
+      export TEST_DURATION=$durationTestCount 
 
       # Travese the artefact folders and pull out all artefacts,
       # format the files so they can be injected into a slack message
