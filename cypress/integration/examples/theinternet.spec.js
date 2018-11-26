@@ -2,7 +2,7 @@ describe('Logging In - HTML Web Form - The Internet', function () {
   context('Unauthorized', function () {
     it('User denied access with invalid details', function () {
       cy.visit('/login')
-      cy.url().should('include', 'login')
+      cy.url().should('include', 'blogin')
       cy.get('#username').type('invalidUser')
       cy.get('#password').type('invalidPassword{enter}')
       cy.get('.error').contains('Your username is invalid!')
