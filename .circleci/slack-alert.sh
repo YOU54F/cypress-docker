@@ -1,4 +1,4 @@
-export REPORT_LOCATION=~/app/cypress/reports/mocha/mochawesome    
+export REPORT_LOCATION=~/app/cypress/reports/mocha/mochawesome*    
 export REPORT_LOCATION_JUNIT=~/app/cypress/reports/junit    
 export VIDEO_LOCATION=~/app/cypress/videos/ 
 export SCREENSHOT_LOCATION=~/app/cypress/screenshots/ 
