@@ -116,8 +116,9 @@ workflows:
             - build
           filters:  
             branches:
-              ignore: master
-              ignore: circleCIworkflows
+              ignore: 
+                - master
+                - circleCIworkflows
       - test1:
           <<: *defaultsTestRequires
       - test2:
