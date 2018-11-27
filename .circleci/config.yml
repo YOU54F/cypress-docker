@@ -69,6 +69,7 @@ jobs:
       default: true
     <<: *defaults        
     steps:
+      run: do something
       - when:
           condition: << parameters.is-pull-request >>
           steps:
