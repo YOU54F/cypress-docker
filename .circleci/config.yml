@@ -69,19 +69,23 @@ jobs:
         default: true
     <<: *defaults
     steps:
-      - run: echo "<< parameters.is-pull-request >>"
+      - attach_workspace:
+          at: ~/        
       - when:
-          condition: << parameters.is-pull-request >>
+          condition: << parameters.is-pull-request >>  
           steps:
-            - attach_workspace:
-                at: ~/                   
             - run:
                 name: Sonarqube if Pull Request
                 command: |
                   cd .circleci
                   chmod +x sonar-scanner-on-pr.sh
                   ./sonar-scanner-on-pr.sh    
-      
+      - unless:
+          condition: << parameters.is-pull-request >>
+          steps:
+            - run: echo "don't preinstall"
+
+     
   test1:
     <<: *defaults
     <<: *defaultsTest
