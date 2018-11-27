@@ -111,7 +111,7 @@ workflows:
       - scan:
           filters:  
             branches:
-              only: /pull.*/
+              only: /^.*pull.*$/
           requires:
             - build
       - test1:
