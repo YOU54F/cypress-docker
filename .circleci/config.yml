@@ -63,10 +63,10 @@ jobs:
             - app
 
   scan:
-      parameters:
-      is-pull-request:
-        type: boolean
-        default: true
+    parameters:
+    is-pull-request:
+      type: boolean
+      default: true
     <<: *defaults        
     steps:
       - when:
