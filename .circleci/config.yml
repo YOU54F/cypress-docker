@@ -119,7 +119,7 @@ workflows:
               ignore: 
                 - master
               only:
-                -  /^.*pull.*$/
+                -  $CIRCLE_PULL_REQUEST
       - test1:
           <<: *defaultsTestRequires
       - test2:
