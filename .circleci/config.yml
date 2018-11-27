@@ -67,9 +67,9 @@ jobs:
     is-pull-request:
       type: boolean
       default: true
-    <<: *defaults        
-    steps:
-      - run: do something
+    <<: *defaults
+     steps:
+      - run: echo "<< parameters.is-pull-request >>"
       - when:
           condition: << parameters.is-pull-request >>
           steps:
@@ -128,19 +128,19 @@ workflows:
                 - master
       - test1:
           <<: *defaultsTestRequires
-      - test2:
-          <<: *defaultsTestRequires
-      - test3:
-          <<: *defaultsTestRequires
-      - test4:
-          <<: *defaultsTestRequires          
-      - test5:
-          <<: *defaultsTestRequires          
-      - test6:
-          <<: *defaultsTestRequires
-      - test7:
-          <<: *defaultsTestRequires
-      - test8:
-          <<: *defaultsTestRequires
+      # - test2:
+      #     <<: *defaultsTestRequires
+      # - test3:
+      #     <<: *defaultsTestRequires
+      # - test4:
+      #     <<: *defaultsTestRequires          
+      # - test5:
+      #     <<: *defaultsTestRequires          
+      # - test6:
+      #     <<: *defaultsTestRequires
+      # - test7:
+      #     <<: *defaultsTestRequires
+      # - test8:
+      #     <<: *defaultsTestRequires
 
 
