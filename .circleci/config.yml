@@ -68,7 +68,7 @@ jobs:
         type: boolean
         default: true
     <<: *defaults
-     steps:
+    steps:
       - run: echo "<< parameters.is-pull-request >>"
       - when:
           condition: << parameters.is-pull-request >>
