@@ -63,10 +63,14 @@ jobs:
             - app
 
   scan:
+      parameters:
+      is-pull-request:
+        type: boolean
+        default: true
     <<: *defaults        
     steps:
       - when:
-          condition: $CIRCLE_PULL_REQUEST
+          condition: << parameters.is-pull-request >>
           steps:
             - attach_workspace:
                 at: ~/                   
