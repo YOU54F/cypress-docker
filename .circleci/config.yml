@@ -109,9 +109,6 @@ workflows:
     jobs:
       - build
       - scan:
-          filters:  
-            branches:
-              only: /^.*pull.*$/
           requires:
             - build
       - test1:
