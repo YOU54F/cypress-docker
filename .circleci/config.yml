@@ -64,7 +64,9 @@ jobs:
 
   scan:
     <<: *defaults        
-    steps:            
+    steps: 
+      - attach_workspace:
+          at: ~/                   
       - run:
           name: Sonarqube if Pull Request
           command: |
