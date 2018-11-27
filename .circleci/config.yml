@@ -68,8 +68,9 @@ jobs:
       - run:
           name: Sonarqube if Pull Request
           command: |
-            chmod +x .circleci/sonar-scanner-on-pr.sh
-            ./.circleci/sonar-scanner-on-pr.sh    
+            cd .circleci
+            chmod +x sonar-scanner-on-pr.sh
+            ./sonar-scanner-on-pr.sh    
  
   test1:
     <<: *defaults
