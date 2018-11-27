@@ -118,7 +118,6 @@ workflows:
             branches:
               ignore: 
                 - master
-                - circleCIworkflows
               only:
                 -  /^.*pull.*$/
       - test1:
