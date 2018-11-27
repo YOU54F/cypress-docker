@@ -64,9 +64,9 @@ jobs:
 
   scan:
     parameters:
-    is-pull-request:
-      type: boolean
-      default: true
+      is-pull-request:
+        type: boolean
+        default: true
     <<: *defaults
      steps:
       - run: echo "<< parameters.is-pull-request >>"
