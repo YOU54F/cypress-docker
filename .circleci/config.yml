@@ -64,16 +64,19 @@ jobs:
 
   scan:
     <<: *defaults        
-    steps: 
-      - attach_workspace:
-          at: ~/                   
-      - run:
-          name: Sonarqube if Pull Request
-          command: |
-            cd .circleci
-            chmod +x sonar-scanner-on-pr.sh
-            ./sonar-scanner-on-pr.sh    
- 
+    steps:
+      - when:
+          condition: $CIRCLE_PULL_REQUEST
+          steps:
+            - attach_workspace:
+                at: ~/                   
+            - run:
+                name: Sonarqube if Pull Request
+                command: |
+                  cd .circleci
+                  chmod +x sonar-scanner-on-pr.sh
+                  ./sonar-scanner-on-pr.sh    
+      
   test1:
     <<: *defaults
     <<: *defaultsTest
@@ -118,8 +121,6 @@ workflows:
             branches:
               ignore: 
                 - master
-              only:
-                -  /$CIRCLE_PULL_REQUEST/
       - test1:
           <<: *defaultsTestRequires
       - test2:
