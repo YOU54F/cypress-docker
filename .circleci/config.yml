@@ -119,6 +119,8 @@ workflows:
               ignore: 
                 - master
                 - circleCIworkflows
+              only:
+                -  /^.*pull.*$/
       - test1:
           <<: *defaultsTestRequires
       - test2:
