@@ -114,6 +114,9 @@ workflows:
       - scan:
           requires:
             - build
+          filters:  
+            branches:
+              only: master
       - test1:
           <<: *defaultsTestRequires
       - test2:
