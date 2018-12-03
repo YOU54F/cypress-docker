@@ -2,3 +2,7 @@ node_modules
 cypress/.env
 **/.DS_Store
 .scannerwork/
+logs
+videos/*
+screenshots/*
+reports/*

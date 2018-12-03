@@ -13,12 +13,12 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 
-// Import commands.js using ES2015 syntax:
+// Import commands.js
 import './commands'
-import 'cypress-failed-log'
 
-// Alternatively you can use CommonJS syntax:
-// require('./commands')
+// Import additional apps
+import 'cypress-failed-log'
+import '@applitools/eyes.cypress/commands'
 
 beforeEach(function () {
     cy.log('Test Started')
@@ -35,3 +35,4 @@ beforeEach(function () {
   after(function () {
     cy.log('Test Suite Completed')
   })
+  

@@ -36,4 +36,5 @@ function getConfigurationByFile(file) {
   const pathToConfigFile = path.resolve('cypress', 'config', `${file}.json`)
   return fs.readJson(pathToConfigFile)
 }
-
+// Adding applitoools, must be outside of module_exports
+require('@applitools/eyes.cypress')(module);
