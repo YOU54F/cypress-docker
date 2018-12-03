@@ -1,7 +1,4 @@
 node_modules
 cypress/.env
-cypress/screenshots
-cypress/videos
-cypress/reports
 **/.DS_Store
 .scannerwork/

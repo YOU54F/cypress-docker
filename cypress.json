@@ -1,6 +1,0 @@
-{
-  "reporter": "mocha-multi-reporters",
-  "reporterOptions": {
-    "configFile": "config.json"
-  }
-}
