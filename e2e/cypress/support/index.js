@@ -18,7 +18,7 @@ import './commands'
 
 // Import additional apps
 import 'cypress-failed-log'
-import '@applitools/eyes.cypress/commands'
+// import '@applitools/eyes.cypress/commands'
 
 beforeEach(function () {
     cy.log('Test Started')
