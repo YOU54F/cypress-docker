@@ -26,11 +26,8 @@ const CIRCLE_URL = 'https://circleci.com/api/v1.1/project/'
 const GIT_COMMIT_URL = `${VCS_BASEURL_GITHUB}/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/commit/${CIRCLE_SHA1}`
 const BITBUCKET_COMMIT_URL = `${VCS_BASEURL_BITBUCKET}/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/commits/${CIRCLE_SHA1}`
 const REPORT_ARTEFACT_URL = `${CIRCLE_URL}/${VCS_ROOT}/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BUILD_NUM}/artifacts/0`
-var {
-    pr_link,
-    video_attachments_slack,
-    screenshot_attachments_slack
-} = ''
+var pr_link = ''
+var video_attachments_slack = ''
 const reportStats = getTestReportStatus() // process the test report
 const reportHTMLUrl = (REPORT_ARTEFACT_URL + reportHTML)
 
