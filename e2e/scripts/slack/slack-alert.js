@@ -28,6 +28,7 @@ const BITBUCKET_COMMIT_URL = `${VCS_BASEURL_BITBUCKET}/${CIRCLE_PROJECT_USERNAME
 const REPORT_ARTEFACT_URL = `${CIRCLE_URL}/${VCS_ROOT}/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BUILD_NUM}/artifacts/0`
 var pr_link = ''
 var video_attachments_slack = ''
+var screenshot_attachments_slack = ''
 const reportStats = getTestReportStatus() // process the test report
 const reportHTMLUrl = (REPORT_ARTEFACT_URL + reportHTML)
 
