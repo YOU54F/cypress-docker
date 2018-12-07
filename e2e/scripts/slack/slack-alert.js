@@ -22,7 +22,7 @@ const {
 const VCS_ROOT = 'github' //change to bitbucket, if circleci project hosted on bitbucket
 const VCS_BASEURL_GITHUB = 'https://github.com'
 const VCS_BASEURL_BITBUCKET = 'https://bitbucket.org'
-const CIRCLE_URL = 'https://circleci.com/api/v1.1/project/'
+const CIRCLE_URL = 'https://circleci.com/api/v1.1/project'
 const GIT_COMMIT_URL = `${VCS_BASEURL_GITHUB}/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/commit/${CIRCLE_SHA1}`
 const BITBUCKET_COMMIT_URL = `${VCS_BASEURL_BITBUCKET}/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/commits/${CIRCLE_SHA1}`
 const REPORT_ARTEFACT_URL = `${CIRCLE_URL}/${VCS_ROOT}/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BUILD_NUM}/artifacts/0`
