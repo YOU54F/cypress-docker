@@ -1,5 +1,5 @@
 // cypress/plugins/index.js
-
+const cucumber = require('cypress-cucumber-preprocessor').default
 const fs = require('fs-extra')
 const path = require('path')
 
@@ -10,7 +10,7 @@ module.exports = (on,config) => {
   on('task', {
     failed: require('cypress-failed-log/src/failed')(),
   })
-
+  on('file:preprocessor', cucumber())
   // process the configFile option flag and load
   // a new config file in cypress/config if value matches
   // default to base cypress.json config

@@ -25,9 +25,13 @@
   },
   "devDependencies": {
     "@applitools/eyes.cypress": "^3.3.9",
+    "cypress-cucumber-preprocessor": "^1.7.0",
     "cypress-testing-library": "^2.3.4",
     "npm-run-all": "^4.1.2",
     "serve": "^10.0.0",
     "wait-port": "^0.2.2"
+  },
+  "cypress-cucumber-preprocessor": {
+    "step_definitions": "cypress/support/cucumber/step_definitions/"
   }
 }
