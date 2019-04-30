@@ -1,6 +1,6 @@
 # Cypress IO Example
 
-[![CircleCI](https://circleci.com/gh/YOU54F/cypressio-docker-typescript.svg?style=svg)](https://circleci.com/gh/YOU54F/cypressio-docker)
+[![CircleCI](https://circleci.com/gh/YOU54F/cypress-docker-typescript.svg?style=svg)](https://circleci.com/gh/YOU54F/cypress-docker)
 [![Sonarcloud Status](https://sonarcloud.io/api/project_badges/measure?project=YOU54F_cypressio-docker-typescript&metric=alert_status)](https://sonarcloud.io/dashboard?id=YOU54F_cypressio-docker)
 
 This is an example project testing a few different sites
@@ -123,7 +123,7 @@ The GUI can be opened by `npx cypress open` but requires a `--env configFile=<en
 
 This project is building in CircleCI and can be viewed at the following link
 
-https://circleci.com/gh/YOU54F/cypressio-docker-typescript
+https://circleci.com/gh/YOU54F/cypress-docker-typescript
 
 See the `.circleci` folder
 
