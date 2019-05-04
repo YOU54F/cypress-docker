@@ -1,5 +1,5 @@
 {
-  "name": "cypress-example",
+  "name": "cypress-docker",
   "version": "0.0.0",
   "description": "This package is to install cypress and reporters",
   "main": "index.js",
@@ -15,7 +15,7 @@
     "aws-sdk": "^2.286.2",
     "cypress": "^3.2.0",
     "cypress-failed-log": "^2.4.0",
-    "mocha": "^5.2.0",
+    "mocha": "6.0.0",
     "mocha-multi-reporter": "^2.0.1",
     "mocha6-junit-reporter": "^2.0.2",
     "mochawesome": "^3.1.1",
