@@ -24,7 +24,7 @@ jobs:
             - ~/.cache
       - run:
           name: Install jq
-          command: cd e2e && apt-get install jq         
+          command: cd e2e && apt-get install jq
       - run:
           name: Running E2E tests with recording
           when: on_success
@@ -32,7 +32,7 @@ jobs:
       - run:
           name: Combine MochaAwesome Reports
           when: always
-          command: cd e2e && make combine-reports     
+          command: cd e2e && make combine-reports && make generate-reports
       - store_test_results:
           path: e2e/cypress/reports
       - store_artifacts:
@@ -41,11 +41,11 @@ jobs:
           path: e2e/cypress/videos
       - store_artifacts:
           path: e2e/cypress/screenshots
-    #   - run:
-    #       name: Publish test artefacts s3 bucket
-    #       when: always
-    #       command: cd e2e && make publish-reports-s3
+      #   - run:
+      #       name: Publish test artefacts s3 bucket
+      #       when: always
+      #       command: cd e2e && make publish-reports-s3
       - run:
           name: Slack Custom Reporting
           when: always
-          command: cd e2e && make slack-alert 
+          command: cd e2e && make slack-alert
