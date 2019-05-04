@@ -4,7 +4,7 @@
   "description": "This package is to install cypress and reporters",
   "main": "index.js",
   "scripts": {
-    "slack": "mochawesome-slack-reporter --logger",
+    "slack": "cypress-slack-reporter --logger",
     "test:cypress:serve": "serve --listen 13370 ./cypress/fixtures/test-app",
     "test:cypress:run": "wait-port --timeout 10000 localhost:13370 && cypress run",
     "test:cypress:open": "wait-port --timeout 10000 localhost:13370 && cypress open",
@@ -16,6 +16,7 @@
     "aws-sdk": "^2.286.2",
     "cypress": "^3.2.0",
     "cypress-failed-log": "^2.4.0",
+    "cypress-slack-reporter": "^0.1.0",
     "mocha": "^6.1.4",
     "mocha-multi-reporter": "^2.0.1",
     "mocha6-junit-reporter": "^2.0.2",
