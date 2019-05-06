@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="0.087" tests="1" failures="0">
+  <testsuite name="Root Suite" timestamp="2019-05-05T22:21:50" tests="0" failures="0" time="0">
+  </testsuite>
+  <testsuite name="This test also push to array" timestamp="2019-05-05T22:21:50" tests="1" failures="0" time="0.087">
+    <testcase name="This test also push to array test" time="0.087" classname="test">
+    </testcase>
+  </testsuite>
+</testsuites>

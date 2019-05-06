@@ -1,6 +1,6 @@
 {
   "baseUrl": "https://the-internet.herokuapp.com",
-  "reporter": "mocha-multi-reporters",
+  "reporter": "cypress-multi-reporters",
   "reporterOptions": {
     "configFile": "reporterOpts.json"
   }
