@@ -28,7 +28,7 @@ jobs:
             - run:
                   name: Running E2E tests with recording
                   when: on_success
-                  command: cd e2e && npm run test:cypress
+                  command: cd e2e && npm run test:cypress:record
             - run:
                   name: Combine MochaAwesome Reports
                   when: always
