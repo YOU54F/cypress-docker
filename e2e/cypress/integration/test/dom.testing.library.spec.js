@@ -23,8 +23,8 @@ describe('dom-testing-library commands', () => {
     cy.findByTestId('image-with-random-alt-tag').click()
   })
 
-  it('getAllByText', () => {
-    cy.getAllByText(/^Jackie Chan/).click({multiple: true})
+  it('findAllByText', () => {
+    cy.findAllByText(/^Jackie Chan/).click({multiple: true})
   })
 
   it('queryByText', () => {
