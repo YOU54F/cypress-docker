@@ -19,7 +19,7 @@
     "cypress": "^3.3.1",
     "cypress-failed-log": "^2.4.0",
     "cypress-multi-reporters": "^1.1.20",
-    "mocha": "^6.1.4",
+    "mocha": "^7.0.0",
     "mocha-junit-reporter": "^1.23.0",
     "mochawesome": "^4.0.0",
     "mochawesome-merge": "^2.0.0",
