@@ -4,7 +4,7 @@ jobs:
     build:
         docker:
             # the Docker image with Cypress dependencies
-            - image: cypress/base:12.0.0
+            - image: cypress/base:12.14.0
               environment:
                   ## this enables colors in the output
                   TERM: xterm
@@ -24,7 +24,7 @@ jobs:
                       - ~/.cache
             - run:
                   name: Install jq
-                  command: cd e2e && apt-get update && apt-get install jq
+                  command: cd e2e && apt-get update && apt-get install -y jq
             - run:
                   name: Running E2E tests with recording
                   when: on_success
