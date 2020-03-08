@@ -26,7 +26,7 @@
     "mochawesome-report-generator": "^4.0.0",
     "shelljs": "^0.8.2",
     "sonarqube-scanner": "^2.1.2",
-    "uuid": "^3.3.2"
+    "uuid": "^7.0.0"
   },
   "devDependencies": {
     "@applitools/eyes.cypress": "3.4.11",
