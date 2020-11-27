@@ -16,7 +16,7 @@
   "dependencies": {
     "@slack/client": "^5.0.1",
     "aws-sdk": "^2.286.2",
-    "cypress": "^3.3.1",
+    "cypress": "^6.0.0",
     "cypress-failed-log": "^2.4.0",
     "cypress-multi-reporters": "^1.1.20",
     "mocha": "^7.0.0",
